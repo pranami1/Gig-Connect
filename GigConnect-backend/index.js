@@ -20,9 +20,17 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://gig-connect-inky.vercel.app", 
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+  credentials: true,
+}));
+
 app.use(express.json());
+
 
 // Connect to MongoDB
 connectDB();

@@ -1,4 +1,4 @@
-import Conversation from "../models/Conversation.js";
+import Conversation from "../models/conversation.js";
 import Application from "../models/Application.js";
 import Job from "../models/Job.js";
 

@@ -19,7 +19,7 @@ export const FreelancerChat = () => {
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/conversations/freelancer", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/conversations/freelancer`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -39,7 +39,7 @@ export const FreelancerChat = () => {
     const fetchMessages = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/messages/${selectedConversation._id}`,
+          `${import.meta.env.VITE_API_URL}/api/messages/${selectedConversation._id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         const data = await res.json();
@@ -57,7 +57,7 @@ export const FreelancerChat = () => {
     if (!newMessage.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/messages", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

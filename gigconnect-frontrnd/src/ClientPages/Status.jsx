@@ -13,7 +13,7 @@ export default function Status() {
   const fetchApplications = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/applications/client/me",
+        `${import.meta.env.VITE_API_URL}/api/applications/client/me`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -29,7 +29,7 @@ export default function Status() {
   const handleStatus = async (appId, status) => {
     try {
       const { data } = await axios.patch(
-        `http://localhost:5000/api/applications/${appId}/status`,
+        `${import.meta.env.VITE_API_URL}/api/applications/${appId}/status`,
         { status },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

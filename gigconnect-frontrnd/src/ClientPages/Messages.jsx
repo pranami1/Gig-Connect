@@ -22,7 +22,7 @@ const Messages = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "http://localhost:5000/api/applications/client/accepted",
+        `${import.meta.env.VITE_API_URL}/api/applications/client/accepted`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const uniqueFreelancers = res.data.map((app) => ({
@@ -42,7 +42,7 @@ const Messages = () => {
   const openConversation = async (freelancerId) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/conversations",
+        `${import.meta.env.VITE_API_URL}/api/conversations`,
         { participants: [userId, freelancerId] },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -58,7 +58,7 @@ const Messages = () => {
   const fetchMessages = async (conversationId) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/messages/${conversationId}`,
+        `${import.meta.env.VITE_API_URL}/api/messages/${conversationId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setMessages(res.data);
@@ -73,7 +73,7 @@ const Messages = () => {
     if (!newMessage.trim() || !selectedConversation) return;
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/messages",
+        `${import.meta.env.VITE_API_URL}/api/messages`,
         {
           conversationId: selectedConversation._id,
           senderId: userId,

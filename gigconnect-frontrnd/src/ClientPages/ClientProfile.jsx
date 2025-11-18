@@ -16,7 +16,7 @@ export default function ClientProfile() {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("User not logged in");
 
-        const res = await fetch("http://localhost:5000/api/profile/me", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -55,7 +55,7 @@ export default function ClientProfile() {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("User not logged in");
 
-      const res = await fetch("http://localhost:5000/api/profile/me", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/me`, {
         method: profile ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",

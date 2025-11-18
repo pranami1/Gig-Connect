@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import ClientNavbar from "../ClientNavbar.jsx";

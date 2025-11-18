@@ -14,7 +14,7 @@ export default function PostJob() {
   // Fetch all jobs
   const fetchJobs = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/jobs");
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs`);
       const data = await res.json();
       setJobs(data);
     } catch (err) {
@@ -36,8 +36,8 @@ export default function PostJob() {
       const token = localStorage.getItem("token");
 
       const url = editingJob
-        ? `http://localhost:5000/api/jobs/${editingJob._id}`
-        : "http://localhost:5000/api/jobs";
+        ? `${import.meta.env.VITE_API_URL}/api/jobs/${editingJob._id}`
+        : `${import.meta.env.VITE_API_URL}/api/jobs`;
 
       const method = editingJob ? "PUT" : "POST";
 
@@ -78,7 +78,7 @@ export default function PostJob() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/jobs/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

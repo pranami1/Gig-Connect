@@ -15,7 +15,7 @@ export const Jobs = () => {
 
   const fetchJobs = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/jobs", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs`, {
         headers: { Authorization: token ? `Bearer ${token}` : "" },
       });
       if (!res.ok) throw new Error("Failed to fetch jobs");
@@ -23,7 +23,7 @@ export const Jobs = () => {
       setJobs(data);
 
       if (user?.role === "Freelancer") {
-        const resApps = await fetch("http://localhost:5000/api/applications/freelancer/me", {
+        const resApps = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/freelancer/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const apps = await resApps.json();
@@ -51,7 +51,7 @@ export const Jobs = () => {
     if (!coverLetter) return alert("Please write a cover letter!");
 
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${jobId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/${jobId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ coverLetter }),

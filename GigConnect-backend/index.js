@@ -24,7 +24,7 @@ const __dirname = path.dirname(__filename);
 // Middleware
 app.use(cors({
   origin: "https://gig-connect-inky.vercel.app", 
-  methods: "GET,POST,PUT,DELETE",
+  methods: "GET,POST,PUT,DELETE,PATCH",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
 }));
